@@ -9,26 +9,16 @@ import {
 
 import { useState } from "react";
 
-import { initializeApp } from "firebase/app";
+import initializeAuthentication from "@/services/firebase/firebase.init";
 
-// initializeAuthentication();
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBlt1CwX9EvdMFb_8Fz8u_1FQD8QebbHwM",
-  authDomain: "nextjs-13-new.firebaseapp.com",
-  projectId: "nextjs-13-new",
-  storageBucket: "nextjs-13-new.appspot.com",
-  messagingSenderId: "1098998090752",
-  appId: "1:1098998090752:web:c1d047e6465b1760049ce5",
-};
+initializeAuthentication();
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
 const useDataProvider = () => {
   const [user, setUser] = useState({});
 
-  const auth = getAuth(app);
+  const auth = getAuth();
 
   //   googleSignIn
 

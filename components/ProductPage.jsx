@@ -17,8 +17,8 @@ const ProductPage = () => {
         maxBodyLength: Infinity,
         url: `https://app-area.bestu.com.bd/api/nextjs/products?page=${page}`,
         headers: {
-          //   Authorization: process.env.NEXT_PUBLIC_TOKEN,
-          Authorization: "GETUPLTD2023NEXTJS",
+          Authorization: process.env.NEXT_PUBLIC_TOKEN,
+          // Authorization: "GETUPLTD2023NEXTJS",
         },
       };
 
