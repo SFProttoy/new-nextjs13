@@ -15,7 +15,7 @@ const ProductPage = () => {
       let config = {
         method: "get",
         maxBodyLength: Infinity,
-        url: `https://app-area.bestu.com.bd/api/nextjs/products?page=${page}`,
+        url: `${process.env.BASE_URL}/products?page=${page}`,
         headers: {
           Authorization: process.env.NEXT_PUBLIC_TOKEN,
         },
@@ -45,8 +45,8 @@ const ProductPage = () => {
               <div className={styles.product_card}>
                 <div className={styles.card_body}>
                   <Image
-                    src={`/images/iphone-14-pro-max.jpg`}
-                    width={100}
+                    src={`https://cdn.dxomark.com/wp-content/uploads/medias/post-126771/Apple-iPhone-14-Pro_FINAL_featured-image-packshot-review-1.jpg`}
+                    width={250}
                     height={100}
                     alt="phone"
                   />
