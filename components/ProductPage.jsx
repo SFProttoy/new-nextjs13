@@ -45,7 +45,7 @@ const ProductPage = () => {
               <div className={styles.product_card}>
                 <div className={styles.card_body}>
                   <Image
-                    src={`https://cdn.dxomark.com/wp-content/uploads/medias/post-126771/Apple-iPhone-14-Pro_FINAL_featured-image-packshot-review-1.jpg`}
+                    src={`${process.env.BASE_URL}/${product?.image}`}
                     width={250}
                     height={100}
                     alt="phone"

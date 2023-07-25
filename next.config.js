@@ -4,7 +4,7 @@ const nextConfig = {
     BASE_URL: "https://app-area.bestu.com.bd/api/nextjs",
   },
   images: {
-    domains: ["cdn.dxomark.com"],
+    domains: ["app-area.bestu.com.bd"],
   },
 };
 
