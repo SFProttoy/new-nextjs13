@@ -9,15 +9,12 @@
 .login_box {
   width: 60%;
   height: 400px;
-  /* border: 1px solid black; */
-  /* box-shadow: 20px 15px 12px grey; */
   padding: 30px 0;
   background-color: #ffffff;
 }
 
 .google_btn_container {
   display: flex;
-  /* flex-direction: column; */
   background: inherit;
   justify-content: center;
   align-items: center;
