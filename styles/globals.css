@@ -63,3 +63,27 @@ body {
     transform: translate(50%, -50%);
   }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .quote-text::before {
+    left: 280px;
+    transform: translate(-50%, -50%);
+  }
+
+  .quote-text::after {
+    right: 280px;
+    transform: translate(50%, -50%);
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1500px) {
+  .quote-text::before {
+    left: 580px;
+    transform: translate(-50%, -50%);
+  }
+
+  .quote-text::after {
+    right: 580px;
+    transform: translate(50%, -50%);
+  }
+}

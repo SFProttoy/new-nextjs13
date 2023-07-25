@@ -14,7 +14,7 @@
   background-color: #ffffff;
   list-style: none;
   text-decoration: none;
-  margin-left: 80px;
+  margin-left: 50px;
   padding: 30px;
 }
 
@@ -28,7 +28,7 @@
   color: darkolivegreen;
   background-color: initial;
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 20px;
   list-style: none;
   text-decoration: none;
   font-size: 15px;
@@ -51,7 +51,26 @@
   .navbar {
     flex-direction: column;
   }
+  .logo {
+    text-align: center;
+    margin-left: 0;
+  }
   .navs {
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  /* .navbar {
+    flex-direction: column;
+  } */
+  .logo {
+    flex: 1;
+    margin-left: 50px;
+  }
+  .navs {
+    flex: 2;
+    text-align: center;
+    padding: 20px;
   }
 }

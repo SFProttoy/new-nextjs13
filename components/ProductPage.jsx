@@ -6,6 +6,7 @@ import styles from "../styles/products.module.css";
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
+  const [newProducts, setNewProducts] = useState([]);
   const [page, setPage] = useState(1);
 
   const { getToken } = useData();
@@ -24,7 +25,12 @@ const ProductPage = () => {
       axios
         .request(config)
         .then((response) => {
-          setProducts(response.data);
+          // setProducts(response.data);
+          setProducts((prevProducts) => [
+            ...prevProducts,
+            ...response?.data?.data?.data,
+          ]);
+          setNewProducts(response?.data?.data?.data);
         })
         .catch((error) => {
           console.log(error);
@@ -36,10 +42,12 @@ const ProductPage = () => {
     setPage(page + 1);
   };
 
+  console.log(products, newProducts);
+
   return (
     <>
       <div className={styles.cards}>
-        {products?.data?.data.map((product) => {
+        {products.map((product) => {
           return (
             <Fragment key={product?.id}>
               <div className={styles.product_card}>
@@ -72,7 +80,7 @@ const ProductPage = () => {
       </div>
 
       <div className={styles.view_more_container}>
-        {products?.data?.data?.length > 0 ? (
+        {newProducts?.length > 0 ? (
           <div className="flex justify-center">
             <button className={styles.view_more} onClick={handleViewMore}>
               More
