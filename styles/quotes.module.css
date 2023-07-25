@@ -78,3 +78,15 @@
   margin-bottom: 12px;
   text-align: center;
 }
+
+@media screen and (max-width: 767px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin-left: 35px;
+  }
+
+  .box {
+    width: 100%;
+  }
+}

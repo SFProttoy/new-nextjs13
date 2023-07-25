@@ -9,6 +9,7 @@
 }
 
 .logo {
+  flex: 3;
   color: #000;
   background-color: #ffffff;
   list-style: none;
@@ -18,9 +19,10 @@
 }
 
 .navs {
+  flex: 1;
   background-color: initial;
   padding: 30px;
-  margin-right: 80px;
+  /* margin-right: 80px; */
 }
 
 .links {
@@ -44,4 +46,13 @@
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .navs {
+    text-align: center;
+  }
 }

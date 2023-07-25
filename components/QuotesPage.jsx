@@ -4,9 +4,7 @@ import styles from "../styles/quotes.module.css";
 async function getData() {
   const res = await fetch("https://dummyjson.com/quotes");
 
-  // Recommendation: handle errors
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error("Failed to fetch data");
   }
 

@@ -51,3 +51,15 @@ body {
   right: 645px;
   transform: translate(50%, -50%);
 }
+
+@media screen and (max-width: 767px) {
+  .quote-text::before {
+    left: 70px;
+    transform: translate(-50%, -50%);
+  }
+
+  .quote-text::after {
+    right: 70px;
+    transform: translate(50%, -50%);
+  }
+}

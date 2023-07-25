@@ -17,8 +17,7 @@ const ProductPage = () => {
         maxBodyLength: Infinity,
         url: `https://app-area.bestu.com.bd/api/nextjs/products?page=${page}`,
         headers: {
-          // Authorization: process.env.NEXT_PUBLIC_TOKEN,
-          Authorization: "GETUPLTD2023NEXTJS",
+          Authorization: process.env.NEXT_PUBLIC_TOKEN,
         },
       };
 
@@ -54,9 +53,14 @@ const ProductPage = () => {
                   <div className={styles.product_info}>
                     <h1 className={styles.product_name}>{product?.name}</h1>
 
-                    <p className={styles.product_description}>
-                      {product?.short_description}
-                    </p>
+                    {product?.description && (
+                      <p
+                        className={styles.product_description}
+                        dangerouslySetInnerHTML={{
+                          __html: product?.description?.slice(0, 100) + "...",
+                        }}
+                      ></p>
+                    )}
 
                     <h5 className={styles.product_price}>${product?.price}</h5>
                   </div>
