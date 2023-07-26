@@ -8,11 +8,13 @@ const ProductPage = () => {
   const [products, setProducts] = useState([]);
   const [newProducts, setNewProducts] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { getToken } = useData();
 
   useEffect(() => {
     if (getToken() !== undefined) {
+      setIsLoading(true);
       let config = {
         method: "get",
         maxBodyLength: Infinity,
@@ -25,12 +27,17 @@ const ProductPage = () => {
       axios
         .request(config)
         .then((response) => {
-          // setProducts(response.data);
-          setProducts((prevProducts) => [
-            ...prevProducts,
-            ...response?.data?.data?.data,
-          ]);
-          setNewProducts(response?.data?.data?.data);
+          setIsLoading(false);
+          if (page === 1) {
+            setProducts(response?.data?.data?.data);
+            setNewProducts(response?.data?.data?.data);
+          } else {
+            setProducts((prevProducts) => [
+              ...prevProducts,
+              ...response?.data?.data?.data,
+            ]);
+            setNewProducts(response?.data?.data?.data);
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -42,54 +49,65 @@ const ProductPage = () => {
     setPage(page + 1);
   };
 
-  console.log(products, newProducts);
-
   return (
     <>
-      <div className={styles.cards}>
-        {products.map((product) => {
-          return (
-            <Fragment key={product?.id}>
-              <div className={styles.product_card}>
-                <div className={styles.card_body}>
-                  <Image
-                    src={`${process.env.BASE_URL}/${product?.image}`}
-                    width={250}
-                    height={100}
-                    alt="phone"
-                  />
-                  <div className={styles.product_info}>
-                    <h1 className={styles.product_name}>{product?.name}</h1>
+      {isLoading ? (
+        <h1 style={{ textAlign: "center" }}>Loading...</h1>
+      ) : (
+        <>
+          <div className={styles.cards}>
+            {products.map((product) => {
+              return (
+                <Fragment key={product?.id}>
+                  <div className={styles.product_card}>
+                    <div className={styles.card_body}>
+                      <Image
+                        src={`${process.env.BASE_URL}/${product?.image}`}
+                        width={250}
+                        height={100}
+                        alt="phone"
+                      />
+                      <div className={styles.product_info}>
+                        <h1 className={styles.product_name}>{product?.name}</h1>
 
-                    {product?.description && (
-                      <p
-                        className={styles.product_description}
-                        dangerouslySetInnerHTML={{
-                          __html: product?.description?.slice(0, 100) + "...",
-                        }}
-                      ></p>
-                    )}
+                        {product?.description && (
+                          <p
+                            className={styles.product_description}
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                product?.description?.slice(0, 100) + "...",
+                            }}
+                          ></p>
+                        )}
 
-                    <h5 className={styles.product_price}>${product?.price}</h5>
+                        <h5 className={styles.product_price}>
+                          ${product?.price}
+                        </h5>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Fragment>
-          );
-        })}
-      </div>
-
-      <div className={styles.view_more_container}>
-        {newProducts?.length > 0 ? (
-          <div className="flex justify-center">
-            <button className={styles.view_more} onClick={handleViewMore}>
-              More
-            </button>
+                </Fragment>
+              );
+            })}
           </div>
-        ) : (
-          <h1>Sorry No Data Found !</h1>
-        )}
-      </div>
+
+          {isLoading ? (
+            <h1 style={{ textAlign: "center" }}>Loading...</h1>
+          ) : (
+            <div className={styles.view_more_container}>
+              {newProducts?.length > 0 ? (
+                <div className="flex justify-center">
+                  <button className={styles.view_more} onClick={handleViewMore}>
+                    More
+                  </button>
+                </div>
+              ) : (
+                <h1 style={{ marginBottom: "40px" }}>Sorry No Data Found !</h1>
+              )}
+            </div>
+          )}
+        </>
+      )}
     </>
   );
 };

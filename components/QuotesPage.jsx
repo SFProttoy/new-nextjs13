@@ -22,9 +22,11 @@ const QuotesPage = async () => {
             return (
               <div className={styles.card} key={quote.id}>
                 <div className={styles.card_body}>
-                  <h1 className={styles.quote}>{quote?.quote.slice(0, 40)}</h1>
+                  <h1 className={styles.quote}>
+                    {quote?.quote.slice(0, 40)}...
+                  </h1>
                   <Link className={styles.link} href={`/quotes/${quote.id}`}>
-                    See more...
+                    See more
                   </Link>
                   <h5 className={styles.author_name}>{quote?.author}</h5>
                 </div>
