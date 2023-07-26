@@ -52,7 +52,7 @@ const ProductPage = () => {
   return (
     <>
       {isLoading ? (
-        <h1 style={{ textAlign: "center" }}>Loading...</h1>
+        <h1 style={{ textAlign: "center", marginTop: "30px" }}>Loading...</h1>
       ) : (
         <>
           <div className={styles.cards}>
@@ -92,7 +92,9 @@ const ProductPage = () => {
           </div>
 
           {isLoading ? (
-            <h1 style={{ textAlign: "center" }}>Loading...</h1>
+            <h1 style={{ textAlign: "center", marginTop: "30px" }}>
+              Loading...
+            </h1>
           ) : (
             <div className={styles.view_more_container}>
               {newProducts?.length > 0 ? (
